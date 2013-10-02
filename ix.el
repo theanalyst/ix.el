@@ -17,6 +17,10 @@
 ;; on success the url is notified in the minibuffer as well as saved
 ;; in the kill ring.
 ;;
+;; It is recommended to set a user name and token so that you can
+;; later delete or replace a paste. Set this via the variables
+;; `ix-user' and `ix-token' via M-x customize-group RET ix
+;;
 ;; curl is used as the backend via grapnel http request library.
 ;;
 
