@@ -1,3 +1,46 @@
+;;; ix.el -- Emacs client for http://ix.io pastebin
+
+;; Copyright © 2013  Abhishek L
+
+;; Author: Abhishek L <abhishekl.2006@gmail.com>
+;; URL: http://www.github.com/theanalyst/ix.el
+;; Version: 0.5
+;; Package-Requires:((grapnel "0.5.3"))
+
+;; This file is not part of GNU Emacs.
+
+;;; Commentary:
+
+;; ix.el is a simple emacs client to http://ix.io cmdline pastebin. At
+;; the moment using the `ix' command on a selection sends the
+;; selection to ix.io on success the url is notified in the minibuffer
+;; as well as saved in the kill ring.
+;;
+;; curl is used as the backend via grapnel http request library.
+;;
+
+;; History
+
+;; 0.5 - Initial release.
+
+;;; License:
+
+;; This program is free software; you can redistribute it and/or
+;; modify it under the terms of the GNU General Public License
+;; as published by the Free Software Foundation; either version 3
+;; of the License, or (at your option) any later version.
+;;
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+;;
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to the
+;; Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+;; Boston, MA 02110-1301, USA.
+
+;;; Code:
 (require 'grapnel)
 (require 'json)
 
