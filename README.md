@@ -18,8 +18,8 @@ To the `user-init-file` (.emacs) add the following:
 
 `ix` also requires a curl to be in your exec-path.
 
-** Usage
-
+Usage
+-----
 At the moment executing `M-x ix` command on a selection sends the
 selection to ix.io, entire buffer is sent if selection is inactive, on
 success the url is notified in the minibuffer as well as saved in the
@@ -35,9 +35,9 @@ and setting the values for the variable `ix-user` and `ix-token`. If
 the user name didn't exist previously it is created during the first
 time `ix` is used.
 
-** More info
-
-`ix` was built a top of (grapnel)[https://github.com/leathekd/grapnel]
+More info
+---------
+`ix` was built a top of [grapnel](https://github.com/leathekd/grapnel)
 http request library.
 
 Please report issues, improvements etc. at ix github page
