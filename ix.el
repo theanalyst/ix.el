@@ -80,6 +80,7 @@
     (message "Paste created and saved to kill-ring url: %s" ix-url)
     (kill-new ix-url)))
 
+;;;###autoload
 (defun ix (start end)
   (interactive
    (if mark-active
@@ -90,3 +91,5 @@
     (ix-post selection)))
 
 (provide 'ix)
+
+;;; ix.el ends here
