@@ -13,8 +13,9 @@
 
 ;; ix.el is a simple emacs client to http://ix.io cmdline pastebin. At
 ;; the moment using the `ix' command on a selection sends the
-;; selection to ix.io on success the url is notified in the minibuffer
-;; as well as saved in the kill ring.
+;; selection to ix.io, entire buffer is sent if selection is inactive,
+;; on success the url is notified in the minibuffer as well as saved
+;; in the kill ring.
 ;;
 ;; curl is used as the backend via grapnel http request library.
 ;;
