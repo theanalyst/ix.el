@@ -18,8 +18,7 @@
 
 (defun ix-post (text)
   (grapnel-retrieve-url "http://ix.io"
-                        `((success . (lambda (res hdrs) (message "url: %s" res)
-                                       (kill-new res)))
+                        `((success . ix-post--success-callback)
                           (failure . (lambda (res hdrs) (message "failure! %s" hdrs)))
                           (error . (lambda (res err) (message "err %s" err))))
                         "POST"
@@ -27,6 +26,11 @@
                         `((,(format "%s:%s" "f" (length text)) . ,text)
                           ("login" . ,ix-user)
                           ("token" . ,ix-token))))
+
+(defun ix-post--success-callback (res hdrs)
+  (let ((ix-url (substring res 0 -1))) ;; removing newline
+    (message "Paste created and saved to kill-ring url: %s" ix-url)
+    (kill-new ix-url)))
 
 (defun ix (start end)
   (interactive
