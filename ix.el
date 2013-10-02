@@ -1,11 +1,11 @@
-;;; ix.el -- Emacs client for http://ix.io pastebin
+;;; ix.el --- Emacs client for http://ix.io pastebin
 
 ;; Copyright © 2013  Abhishek L
 
 ;; Author: Abhishek L <abhishekl.2006@gmail.com>
 ;; URL: http://www.github.com/theanalyst/ix.el
 ;; Version: 0.5
-;; Package-Requires:((grapnel "0.5.3"))
+;; Package-Requires: ((grapnel "0.5.3"))
 
 ;; This file is not part of GNU Emacs.
 
