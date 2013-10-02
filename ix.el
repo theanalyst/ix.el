@@ -18,7 +18,8 @@
 
 (defun ix-post (text)
   (grapnel-retrieve-url "http://ix.io"
-                        `((success . (lambda (res hdrs) (message "url: %s" res) )) ;; TODO add this to kill-ring
+                        `((success . (lambda (res hdrs) (message "url: %s" res)
+                                       (kill-new res)))
                           (failure . (lambda (res hdrs) (message "failure! %s" hdrs)))
                           (error . (lambda (res err) (message "err %s" err))))
                         "POST"
