@@ -89,7 +89,8 @@
   post id needs to be specified"
   (interactive "sEnter ix url to delete:" ix-url)
   (grapnel-retrieve-url "http://ix.io"
-                         `((success . (lambda (res hdrs) (message "success! %s" res)))
+                        `((success . (lambda (res hdrs) (message "%s"
+                                                            (substring res 0 -1))))
                            (failure . (lambda (res hdrs) (message "failure! %s" hdrs)))
                            (error . (lambda (res err) (message "err %s" err))))
                          "POST"
