@@ -98,6 +98,9 @@
 
 ;;;###autoload
 (defun ix (start end)
+  "Paste the region at http://ix.io, url returned is saved to the
+   kill ring. It is recommended to set up a username and token by
+   configuring the variables `ix-user' and `ix-token'"
   (interactive
    (if mark-active
        (list (region-beginning) (region-end))
