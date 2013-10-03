@@ -81,6 +81,22 @@
     (kill-new ix-url)))
 
 ;;;###autoload
+(defun ix-delete (ix-url)
+  "Delete a post, this requires you to be logged in. Only the
+  post id needs to be specified"
+  (interactive "sEnter ix url to delete:" ix-url)
+  (grapnel-retrieve-url "http://ix.io"
+                         `((success . (lambda (res hdrs) (message "success! %s" res)))
+                           (failure . (lambda (res hdrs) (message "failure! %s" hdrs)))
+                           (error . (lambda (res err) (message "err %s" err))))
+                         "POST"
+                         nil
+                         `((,(format "%s:%s" "f" (length ix-url)) . "")
+                           ("login" . ,ix-user)
+                           ("token" . ,ix-token)
+                           ("rm" . ,ix-url))))
+
+;;;###autoload
 (defun ix (start end)
   (interactive
    (if mark-active
