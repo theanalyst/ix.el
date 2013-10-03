@@ -4,7 +4,7 @@
 
 ;; Author: Abhishek L <abhishekl.2006@gmail.com>
 ;; URL: http://www.github.com/theanalyst/ix.el
-;; Version: 0.5
+;; Version: 0.6
 ;; Package-Requires: ((grapnel "0.5.3"))
 
 ;; This file is not part of GNU Emacs.
@@ -21,12 +21,16 @@
 ;; later delete or replace a paste. Set this via the variables
 ;; `ix-user' and `ix-token' via M-x customize-group RET ix
 ;;
+;; Posts (if posted with user and token) can be deleted by `ix-delete'
+;; command which prompts for post id (the string after http://ix.io/)
+;;
 ;; curl is used as the backend via grapnel http request library.
 ;;
 
 ;; History
 
 ;; 0.5 - Initial release.
+;; 0.6 - Added delete posts functionality
 
 ;;; License:
 
