@@ -3,7 +3,8 @@ README
 
 `ix.el` is a simple emacs client to http://ix.io cmdline pastebin.
 
-** Installation
+Installation
+------------
 
 To install, copy `ix.el` to somewhere your emacs can find, on your
 load path. Usually something like:
@@ -34,6 +35,10 @@ be deleted/replaced at a later time. These can be set by
 and setting the values for the variable `ix-user` and `ix-token`. If
 the user name didn't exist previously it is created during the first
 time `ix` is used.
+
+To delete a post, calling `ix-delete` will prompt for the post
+identifier, which will delete the post. This requires that the post
+was posted using a username and token
 
 More info
 ---------
