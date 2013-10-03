@@ -47,7 +47,6 @@
 
 ;;; Code:
 (require 'grapnel)
-(require 'json)
 
 (defgroup ix nil
   "ix -- the Emacs http://ix.io pastebin client"
