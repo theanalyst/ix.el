@@ -87,7 +87,7 @@
 (defun ix-delete (ix-url)
   "Delete a post, this requires you to be logged in. Only the
   post id needs to be specified"
-  (interactive "sEnter ix url to delete:" ix-url)
+  (interactive "sEnter ix url to delete:")
   (grapnel-retrieve-url "http://ix.io"
                         `((success . (lambda (res hdrs) (message "%s"
                                                             (substring res 0 -1))))
