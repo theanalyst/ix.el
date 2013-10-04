@@ -31,7 +31,8 @@
 
 ;; 0.5 - Initial release.
 ;; 0.6 - Added delete posts functionality
-;; 0.6.1 - Minor fix for `ix-delete' interactive form
+;; 0.6.1 - Minor fix for `ix-delete' interactive form & adding
+;;         `ix-version' as a const
 ;;; License:
 
 ;; This program is free software; you can redistribute it and/or
@@ -51,6 +52,9 @@
 
 ;;; Code:
 (require 'grapnel)
+
+(defconst ix-version "0.6.1"
+  "Version of emacs ix client")
 
 (defgroup ix nil
   "ix -- the Emacs http://ix.io pastebin client"
