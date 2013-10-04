@@ -67,38 +67,32 @@
   :type 'string
   :group 'ix)
 
-(defun ix-post (text)
-  (grapnel-retrieve-url "http://ix.io"
-                        `((success . ix-post--success-callback)
-                          (failure . (lambda (res hdrs) (message "failure! %s" hdrs)))
-                          (error . (lambda (res err) (message "err %s" err))))
-                        "POST"
-                        nil
-                        `((,(format "%s:%s" "f" (length text)) . ,text)
+(defun ix-post (item &optional delete?)
+  (let ((ix-param-alist `((,(format "%s:%s" "f" (length item)) . ,item)
                           ("login" . ,ix-user)
                           ("token" . ,ix-token))))
+    (grapnel-retrieve-url "http://ix.io"
+                          `((success . ,(apply-partially 'ix-post--success-callback
+                                                         'delete?))
+                            (failure . (lambda (res hdrs) (message "failure! %s" hdrs)))
+                            (error . (lambda (res err) (message "err %s" err))))
+                          "POST"
+                          nil
+                          (if delete?
+                              (append ix-param-list `("rm" . ,ix-url))
+                            ix-param-list))))
 
-(defun ix-post--success-callback (res hdrs)
-  (let ((ix-url (substring res 0 -1))) ;; removing newline
-    (message "Paste created and saved to kill-ring url: %s" ix-url)
-    (kill-new ix-url)))
-
+(defun ix-post--success-callback (delete? res hdrs)
+  (let ((ix-reply (substring res 0 -1))) ;; removing newline
+    (if delete? (message "%s" ix-reply)
+      (message "Paste created and saved to kill-ring url: %s" ix-reply))
+    (kill-new ix-reply)))
 ;;;###autoload
 (defun ix-delete (ix-url)
   "Delete a post, this requires you to be logged in. Only the
   post id needs to be specified"
-  (interactive "sEnter ix url to delete:" ix-url)
-  (grapnel-retrieve-url "http://ix.io"
-                        `((success . (lambda (res hdrs) (message "%s"
-                                                            (substring res 0 -1))))
-                           (failure . (lambda (res hdrs) (message "failure! %s" hdrs)))
-                           (error . (lambda (res err) (message "err %s" err))))
-                         "POST"
-                         nil
-                         `((,(format "%s:%s" "f" (length ix-url)) . "")
-                           ("login" . ,ix-user)
-                           ("token" . ,ix-token)
-                           ("rm" . ,ix-url))))
+  (interactive "sEnter ix url to delete:")
+  (ix-post ix-url 't))
 
 ;;;###autoload
 (defun ix (start end)
