@@ -4,7 +4,7 @@
 
 ;; Author: Abhishek L <abhishekl.2006@gmail.com>
 ;; URL: http://www.github.com/theanalyst/ix.el
-;; Version: 0.6
+;; Version: 0.6.1
 ;; Package-Requires: ((grapnel "0.5.3"))
 
 ;; This file is not part of GNU Emacs.
@@ -31,7 +31,7 @@
 
 ;; 0.5 - Initial release.
 ;; 0.6 - Added delete posts functionality
-
+;; 0.6.1 - Minor fix for `ix-delete' interactive form
 ;;; License:
 
 ;; This program is free software; you can redistribute it and/or
