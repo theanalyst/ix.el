@@ -75,8 +75,8 @@
 (defun ix-post (text)
   (grapnel-retrieve-url "http://ix.io"
                         `((success . ix-post--success-callback)
-                          (failure . (lambda (res hdrs) (message "failure! %s" hdrs)))
-                          (error . (lambda (res err) (message "err %s" err))))
+                          (failure . ix--failure-callback)
+                          (error . ix--error-callback))
                         "POST"
                         nil
                         `((,(format "%s:%s" "f" (length text)) . ,text)
@@ -87,6 +87,12 @@
   (let ((ix-url (substring res 0 -1))) ;; removing newline
     (message "Paste created and saved to kill-ring url: %s" ix-url)
     (kill-new ix-url)))
+
+(defun ix--failure-callback (res hdrs)
+  (message "request failure! %s" hdrs))
+
+(defun ix--error-callback (res hdrs)
+  (message "curl error! %s" hdrs))
 
 (defun ix-url--extract-id (ix-url)
   (car (last (split-string ix-url "/")))) ;;right??
@@ -99,8 +105,8 @@
   (grapnel-retrieve-url "http://ix.io"
                         `((success . (lambda (res hdrs) (message "%s"
                                                             (substring res 0 -1))))
-                           (failure . (lambda (res hdrs) (message "failure! %s" hdrs)))
-                           (error . (lambda (res err) (message "err %s" err))))
+                           (failure . ix--failure-callback)
+                           (error . ix--error-callback))
                          "POST"
                          nil
                          `((,(format "%s:%s" "f" (length ix-url)) . "")
