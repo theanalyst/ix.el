@@ -33,6 +33,7 @@
 ;; 0.6 - Added delete posts functionality
 ;; 0.6.1 - Minor fix for `ix-delete' interactive form & adding
 ;;         `ix-version' as a const
+;; 0.6.2 - `ix-delete' accepts a full url or the post id
 ;;; License:
 
 ;; This program is free software; you can redistribute it and/or
@@ -53,7 +54,7 @@
 ;;; Code:
 (require 'grapnel)
 
-(defconst ix-version "0.6.1"
+(defconst ix-version "0.6.2"
   "Version of emacs ix client")
 
 (defgroup ix nil
