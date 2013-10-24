@@ -87,10 +87,13 @@
     (message "Paste created and saved to kill-ring url: %s" ix-url)
     (kill-new ix-url)))
 
+(defun ix-url--extract-id (ix-url)
+  (car (last (split-string ix-url "/")))) ;;right??
+
 ;;;###autoload
 (defun ix-delete (ix-url)
-  "Delete a post, this requires you to be logged in. Only the
-  post id needs to be specified"
+  "Delete a post, this requires you to be logged in. Specify the
+   post id or the url"
   (interactive "sEnter ix url to delete:")
   (grapnel-retrieve-url "http://ix.io"
                         `((success . (lambda (res hdrs) (message "%s"
@@ -102,7 +105,7 @@
                          `((,(format "%s:%s" "f" (length ix-url)) . "")
                            ("login" . ,ix-user)
                            ("token" . ,ix-token)
-                           ("rm" . ,ix-url))))
+                           ("rm" . ,(ix-url--extract-id ix-url)))))
 
 ;;;###autoload
 (defun ix (start end)
