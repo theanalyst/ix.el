@@ -87,6 +87,12 @@
     (message "Paste created and saved to kill-ring url: %s" ix-url)
     (kill-new ix-url)))
 
+(defun ix-get--success-callback (res hdrs)
+  "On success, create a new buffer and display ix post there"
+  (with-current-buffer
+      (get-buffer-create (generate-new-buffer-name "*ix*"))
+    (insert res)))
+
 (defun ix--failure-callback (res hdrs)
   (message "request failure! %s" hdrs))
 
@@ -125,6 +131,14 @@
   (let ((selection (buffer-substring-no-properties start end)))
     (message "posting...")
     (ix-post selection)))
+
+;;;###autoload
+(defun ix-get (ix-url)
+  (grapnel-retrieve-url (concat "http://ix.io" (ix-url--extract-id))
+			`((success . ix-get--success-callback)
+			  (failure . ix--failure-callback)
+			  (error . ix--error-callback))
+			"GET"))
 
 (provide 'ix)
 
