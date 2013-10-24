@@ -88,7 +88,7 @@
     (kill-new ix-url)))
 
 (defun ix-url--extract-id (ix-url)
-  (car (reverse (split-string ix-url "/")))) ;;right??
+  (car (last (split-string ix-url "/")))) ;;right??
 
 ;;;###autoload
 (defun ix-delete (ix-url)
