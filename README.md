@@ -6,14 +6,33 @@ README
 Installation
 ------------
 
+
+### via `package.el`
+
+`ix.el` is available as a package via MELPA. If MELPA is already added 
+to your package archives install the package `ix.el` from there. 
+Otherwise do this in a `*scratch*` buffer:
+
+    (require 'package)
+    (add-to-list 'package-archives
+             '("MELPA" . "http://melpa.milkbox.net/packages/" ))
+             
+Then run `M-x package-refresh-contents` to load the contents of the new repository, 
+and `M-x package-install RET ix.el RET` to install `ix.el`.
+
+### Manual
 To install, copy `ix.el` to somewhere your emacs can find, on your
 load path. Usually something like:
 
     $ mkdir ~/.emacs.d/ix
     $ cp ix.el ~/.emacs.d/ix.el
 
-To the `user-init-file` (.emacs) add the following:
+However manual installation also requires the emacs package [grapnel](https://github.com/leathekd/grapnel)
+in your load-path. Either install that from marmalade package repo or
+add it manually to your load path.
 
+To the `user-init-file` (.emacs) add the following:
+ 
     (add-to-list 'load-path "~/.emacs.d/ix")
     (require 'ix)
 
@@ -37,8 +56,8 @@ the user name didn't exist previously it is created during the first
 time `ix` is used.
 
 To delete a post, calling `ix-delete` will prompt for the post
-identifier, which will delete the post. This requires that the post
-was posted using a username and token
+identifier or the  complete url, which will delete the post. 
+This requires that the post was posted using a username and token
 
 More info
 ---------
