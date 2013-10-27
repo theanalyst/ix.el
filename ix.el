@@ -4,7 +4,7 @@
 
 ;; Author: Abhishek L <abhishekl.2006@gmail.com>
 ;; URL: http://www.github.com/theanalyst/ix.el
-;; Version: 0.6.1
+;; Version: 0.7
 ;; Package-Requires: ((grapnel "0.5.3"))
 
 ;; This file is not part of GNU Emacs.
@@ -34,6 +34,8 @@
 ;; 0.6.1 - Minor fix for `ix-delete' interactive form & adding
 ;;         `ix-version' as a const
 ;; 0.6.2 - `ix-delete' accepts a full url or the post id
+;; 0.7.0 - Adding `ix-browse'
+;;           `ix-browse' lets you browse a post at http://ix.io
 ;;; License:
 
 ;; This program is free software; you can redistribute it and/or
@@ -54,7 +56,7 @@
 ;;; Code:
 (require 'grapnel)
 
-(defconst ix-version "0.6.2"
+(defconst ix-version "0.7"
   "Version of emacs ix client")
 
 (defgroup ix nil
