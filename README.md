@@ -40,6 +40,12 @@ To the `user-init-file` (.emacs) add the following:
 
 Usage
 -----
+The following commands are available
+
+* `ix` - post region\buffer to http://ix.io
+* `ix-delete` - (prompts for url/id) delete a user owned post
+* `ix-browse` - (prompts for url/id) browse a paste from ix.io
+
 At the moment executing `M-x ix` command on a selection sends the
 selection to ix.io, entire buffer is sent if selection is inactive, on
 success the url is notified in the minibuffer as well as saved in the
@@ -56,12 +62,20 @@ the user name didn't exist previously it is created during the first
 time `ix` is used.
 
 To delete a post, calling `ix-delete` will prompt for the post
-identifier or the  complete url, which will delete the post. 
+identifier or the  complete url (of the form http://ix.io/ID), which will delete the post. 
 This requires that the post was posted using a username and token
+
+`ix-browse` lets you browse a paste at ix.io. This prompts for url/ID
+similiar to `ix-delete`. If point is already on a url then it defaults
+to that.
 
 More info
 ---------
-`ix` was built a top of [grapnel](https://github.com/leathekd/grapnel)
+`ix` was built a top of the emacs package [grapnel](https://github.com/leathekd/grapnel)
 http request library.
 
 Please report issues, improvements etc. at ix github page
+
+Similiar Projects
+-----------------
+[emacs-ixio](https://github.com/jorgenschaefer/emacs-ixio) Another simple interface to `ix`, doesn't depend on curl
