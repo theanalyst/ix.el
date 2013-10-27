@@ -89,9 +89,8 @@
 
 (defun ix-get--success-callback (res hdrs)
   "On success, create a new buffer and display ix post there"
-  (with-current-buffer
-      (get-buffer-create (generate-new-buffer-name "*ix*"))
-    (insert res)))
+  (pop-to-buffer (get-buffer-create (generate-new-buffer-name "*ix*")))
+    (insert res))
 
 (defun ix--failure-callback (res hdrs)
   (message "request failure! %s" hdrs))
