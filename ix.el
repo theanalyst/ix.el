@@ -132,8 +132,11 @@
     (ix-post selection)))
 
 ;;;###autoload
-(defun ix-get (ix-url)
-  (grapnel-retrieve-url (concat "http://ix.io" (ix-url--extract-id))
+(defun ix-browse (ix-url)
+  (interactive (list
+		(read-string "Enter ix url/ID to browse:"
+			     (thing-at-point 'url)  nil nil nil)))
+  (grapnel-retrieve-url (concat "http://ix.io/" (ix-url--extract-id ix-url))
 			`((success . ix-get--success-callback)
 			  (failure . ix--failure-callback)
 			  (error . ix--error-callback))
