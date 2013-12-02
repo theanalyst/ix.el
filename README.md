@@ -9,13 +9,15 @@ Installation
 
 ### via `package.el`
 
-`ix.el` is available as a package via MELPA. If MELPA is already added 
-to your package archives install the package `ix.el` from there. 
-Otherwise do this in a `*scratch*` buffer:
+`ix.el` is available as a package via MELPA or Marmalade. If 
+MELPA/Marmalade is already added to your package archives 
+install the package `ix.el` from there. Otherwise 
+do this in a `*scratch*` buffer:
 
     (require 'package)
     (add-to-list 'package-archives
-             '("MELPA" . "http://melpa.milkbox.net/packages/" ))
+             '("MELPA" . "http://melpa.milkbox.net/packages/" )
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
              
 Then run `M-x package-refresh-contents` to load the contents of the new repository, 
 and `M-x package-install RET ix.el RET` to install `ix.el`.
